@@ -11,7 +11,14 @@
     </header>
     <main>
         <h1>Contacts</h1>
-        <p><em>TODO</em></p>
+        <ul>
+            <li th:each="entry : ${contactList}">
+                <a th:text="${entry.name}"
+                    th:href="@{/contacts/{id}(id=${entry.id})">
+                </a>
+            </li>
+
+        </ul>
     </main>
     <footer>
         built with <a href="https://spring.io/">Spring</a>
