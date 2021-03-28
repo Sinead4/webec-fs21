@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="html(title,content)">
+
+<article th:fragment="pageskelett(title, content)">
+    <div id="container">
+
+        <h1 th:replace="${title}">Mein Titel </h1>
+
+        <div class="container">
+            <div th:replace="${content}">
+                Content
+            </div>
+        </div>
+
+    </div>
+
+</article>
+
+
+</html>

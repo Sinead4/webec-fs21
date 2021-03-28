@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="html(title,content)">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:replace="fragements/fragmentsPage::pageskelett(~{::title}, ~{::content})">
+
+    <header th:fragment="title">
+        Title Index
+    </header>
+
+    <div th:fragment="content">
+        Content von Index
+    </div>
+
+</div>
+
+</body>
+</html>

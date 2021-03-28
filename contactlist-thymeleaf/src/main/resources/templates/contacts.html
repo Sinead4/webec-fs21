@@ -6,20 +6,45 @@
     <title>Contacts</title>
 </head>
 <div id="container">
-    <header>
+    <div th:replace="fragements/fragmentsPage::pageskelett(~{::title}, ~{::content})">
+
+    <header th:fragment="title">
         <h1>Contact List</h1>
     </header>
-    <main>
-        <h1>Contacts</h1>
-        <ul>
-            <li th:each="entry : ${contactList}">
-                <a th:text="${entry.name}"
-                    th:href="@{/contacts/{id}(id=${entry.id})">
-                </a>
-            </li>
+        <main th:fragment="content">
+            <div id="contacts-container">
+                <ul>
+                    <li th:each="entry : ${contactList}">
+                        <a   th:text="${entry.name}"
+                             th:href="@{/contacts/{id}(id=${entry.id})}">
+                        </a>
+                    </li>
+                </ul>
+                <div>
+                    <div th:if="${contact == null}">
+                        Noch keinen Kontakt ausgewählt.
+                    </div>
 
-        </ul>
-    </main>
+                    <table th:if="${contact != null}">
+                        <!-- wird nur gerendet wenn contact nicht null-->
+
+                        <tr th:replace="fragements/contactsFrag::listSingleEntry('Vorname', ${contact.firstName})"></tr>
+                        <tr th:replace="fragements/contactsFrag::listSingleEntry('Nachname', ${contact.lastName})"></tr>
+
+                        <div th:if="${!contact.phone.isEmpty()}">
+                            <tr th:replace="fragements/contactsFrag::listRow('Telefonnummer', ${contact.phone})"></tr>
+                        </div>
+
+                        <div th:if="${!contact.email.isEmpty()}">
+                            <tr th:replace="fragements/contactsFrag::listRow('E-Mail', ${contact.email})"></tr>
+                        </div>
+
+                    </table>
+                </div>
+            </div>
+
+        </main>
+    </div>
     <footer>
         built with <a href="https://spring.io/">Spring</a>
     </footer>

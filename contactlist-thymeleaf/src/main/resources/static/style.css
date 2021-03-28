@@ -62,3 +62,20 @@ footer {
     color: #737373;
     margin-bottom: 2em;
 }
+
+/*Contacts layout*/
+#contacts-container{
+    display: flex;
+
+}
+
+/*Nur Listen die direkte Kinder sind vom Container*/
+#contacts-container > ul{
+    margin: 0 20px 0 0;
+    padding: 0;
+}
+
+#contacts-container > ul > li{
+    list-style: none;
+}
+
