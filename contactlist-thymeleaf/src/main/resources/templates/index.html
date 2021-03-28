@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="html(title,content)">
 <html lang="en">
+<link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -10,7 +11,7 @@
 <div th:replace="fragements/fragmentsPage::pageskelett(~{::title}, ~{::content})">
 
     <h1 th:fragment="title">
-        Title Index neu
+        Title Index neu??
     </h1>
 
     <div th:fragment="content">

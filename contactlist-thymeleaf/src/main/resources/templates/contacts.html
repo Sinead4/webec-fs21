@@ -14,7 +14,7 @@
         <main th:fragment="content">
             <div id="contacts-container">
                 <ul>
-                    <li th:each="entry : ${contactList}">
+                    <li th:each="entry : ${contactList}" class="contactLinks">
                         <a   th:text="${entry.name}"
                              th:href="@{/contacts/{id}(id=${entry.id})}">
                         </a>
