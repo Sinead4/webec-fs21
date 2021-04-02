@@ -1,17 +1,14 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="html(title,content)">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="fragements/fragmentsPage::pageskelett(~{::title}, ~{::content})">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
     <title>Contacts</title>
 </head>
 <div id="container">
-    <div th:replace="fragements/fragmentsPage::pageskelett(~{::title}, ~{::content})">
+    <div >
 
-    <header th:fragment="title">
-        <h1>Contact List</h1>
-    </header>
-        <main th:fragment="content">
+        <div th:fragment="content">
             <div id="contacts-container">
                 <ul>
                     <li th:each="entry : ${contactList}" class="contactLinks">
@@ -43,7 +40,7 @@
                 </div>
             </div>
 
-        </main>
+        </div>
     </div>
     <footer>
         built with <a href="https://spring.io/">Spring</a>

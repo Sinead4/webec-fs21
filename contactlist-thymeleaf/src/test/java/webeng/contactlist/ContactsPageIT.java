@@ -18,7 +18,7 @@ public class ContactsPageIT {
     @Test
     void allContactListEntriesAreShown(){
         var driver = new HtmlUnitDriver();
-        driver.navigate().to("https://localhost:"+port +"/contacts");
+        driver.navigate().to("http://localhost:"+port +"/contacts");
 
         var contactLinks = driver.findElements(By.cssSelector("main ul a"));
         assertEquals(30, contactLinks.size());

@@ -1,17 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="html(title,content)">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="pageskelett(title,content)">
 <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
 
-<article th:fragment="pageskelett(title, content)">
+<article>
     <div class="container">
 
-        <h1 th:replace="${title}">Mein Titel </h1>
+        <header>
+            <h1>
+                ContactList
+            </h1>
+        </header>
 
-        <div class="container">
+        <nav>
+            <ul>
+                <li><a href="/contacts">ContactList</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/home">Home</a></li>
+            </ul>
+        </nav>
+
+        <main id="container">
+
+            <h1 th:replace="${title}">Mein Titel </h1>
+
             <div th:replace="${content}">
                 Content
             </div>
-        </div>
+        </main>
 
     </div>
 

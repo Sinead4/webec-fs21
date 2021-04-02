@@ -79,3 +79,14 @@ footer {
     list-style: none;
 }
 
+nav ul li {
+    display: inline;
+    margin-right: 50px;
+}
+
+nav ul {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    list-style-type: none;
+}

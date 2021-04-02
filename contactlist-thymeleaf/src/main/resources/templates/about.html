@@ -4,25 +4,22 @@
 <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>About us</title>
 </head>
 <body>
 
-<div>
-    <header>
-        <h1> Contact List </h1>
-    </header>
+    <div th:fragment="title">
+        <h1>About this page</h1>
+    </div>
 
-    <body>
-
-
-    </body>
-
-
-    <main th:fragment="content">
-        Welcome to the ContactList Website
-    </main>
-
+<div th:fragment="content">
+    <div>
+        <ul>
+            <li>Anzahl Kontakte</li>
+            <li>Anzahl Telefonnummer</li>
+            <li>Anzahl E-Mail Adressen</li>
+        </ul>
+    </div>
 </div>
 
 </body>
