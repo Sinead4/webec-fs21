@@ -1,0 +1,16 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<tr th:fragment="count(label, list)">
+    <th th:text="${label}">Label</th>
+    <span th:text="${list}">Liste </span>
+</tr>
+
+
+<tr th:fragment="countSpecificItem(label, list)">
+    <th th:text="${label}"></th>
+
+
+</tr>
+</html>

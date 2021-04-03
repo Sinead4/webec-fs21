@@ -5,6 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import webeng.contactlist.service.ContactService;
 
+import java.util.List;
+
 @Controller
 public class AboutController {
 
@@ -17,8 +19,11 @@ public class AboutController {
     @GetMapping("/about")
     public String about(Model model){
         model.addAttribute("contactList", service.getContactList());
+        model.addAttribute("countedMails",service.countAllMails());
+        model.addAttribute("countedPhoneNumbers",service.countAllPhoneNumbers());
         return "about";
     }
+
 
 
 }

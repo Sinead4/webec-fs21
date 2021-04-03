@@ -37,6 +37,35 @@ public class ContactService {
                 .collect(toList());
     }
 
+    public int countAllMails(){
+        int count = 0;
+
+            for (int i = 0; i < contacts.size(); i++) {
+                if(contacts.get(i) != null){
+                    contacts.get(i).getEmail();
+                    count++;
+                }
+
+            }
+        return count;
+    }
+
+    public int countAllPhoneNumbers(){
+        int count = 0;
+
+
+        for(int i=0; i<contacts.size(); i++){
+            if(contacts.get(i) != null){
+                contacts.get(i).getPhone();
+                count++;
+            }
+
+        }
+        return count;
+    }
+
+
+
     public Optional<Contact> findContact(int id) {
         return Optional.ofNullable(contacts.get(id));
     }

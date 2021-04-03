@@ -15,9 +15,9 @@
 <div th:fragment="content">
     <div>
         <ul>
-            <li>Anzahl Kontakte</li>
-            <li>Anzahl Telefonnummer</li>
-            <li>Anzahl E-Mail Adressen</li>
+            <li th:replace="fragements/aboutStatistikFrag::count('Anzahl Kontakte', ${contactList.size()})"></li>
+            <li th:replace="fragements/aboutStatistikFrag::count('Anzahl Kontakte', ${countedPhoneNumbers})"></li>
+            <li th:replace="fragements/aboutStatistikFrag::count('Anzahl Telefonnummern', ${countedMails})"></li>
         </ul>
     </div>
 </div>
