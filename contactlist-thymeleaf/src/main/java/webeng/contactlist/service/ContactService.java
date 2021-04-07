@@ -30,9 +30,12 @@ public class ContactService {
                 .collect(toMap(Contact::getId, identity()));
     }
 
-    public List<ContactListEntry> getContactList() {
+    public List<ContactListEntry> getContactList(String search) {
         return contacts.values().stream()
                 .sorted(comparing(Contact::getId))
+                .filter(c -> search  == null || //zuerst abchecken ob null wenn ja wird alles zurückgegeben.
+                        c.getFirstName().contains(search) ||
+                        c.getLastName().contains(search))
                 .map(c -> new ContactListEntry(c.getId(), c.getFirstName() + " " + c.getLastName()))
                 .collect(toList());
     }
@@ -42,8 +45,10 @@ public class ContactService {
 
             for (int i = 0; i < contacts.size(); i++) {
                 if(contacts.get(i) != null){
-                    contacts.get(i).getEmail();
-                    count++;
+                    for(int r = 0; r<=contacts.get(i).getEmail().size(); r++) {
+                        contacts.get(i).getEmail();
+                        count++;
+                    }
                 }
 
             }
@@ -53,11 +58,12 @@ public class ContactService {
     public int countAllPhoneNumbers(){
         int count = 0;
 
-
         for(int i=0; i<contacts.size(); i++){
             if(contacts.get(i) != null){
-                contacts.get(i).getPhone();
-                count++;
+                for(int r = 0; r<=contacts.get(i).getPhone().size(); r++) {
+                    contacts.get(i).getPhone();
+                    count++;
+                }
             }
 
         }

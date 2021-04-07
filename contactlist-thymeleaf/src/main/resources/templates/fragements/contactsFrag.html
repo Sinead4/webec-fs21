@@ -5,7 +5,8 @@
     <th th:text="${label}">Telefonnummern</th>
     <td>
         <ul>
-            <li th:each="entry : ${list}"
+            <li
+                th:each="entry : ${list}"
                 th:text="${entry}">
             </li>
         </ul>
@@ -13,9 +14,9 @@
 </tr>
 
 
-<tr th:fragment="listSingleEntry(label, string)">
+<tr th:fragment="listSingleEntry(label, id, string)">
     <th th:text="${label}"></th>
-    <td th:text="${string}"></td>
+    <td th:text="${string}" th:id="${id}"></td>
 </tr>
 
 </html>

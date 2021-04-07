@@ -10,23 +10,33 @@
 
         <div th:fragment="content">
             <div id="contacts-container">
+
                 <ul>
-                    <li th:each="entry : ${contactList}" class="contactLinks">
+                    <li th:each="entry : ${contactList}"
+                        class="contactLinks">
                         <a   th:text="${entry.name}"
                              th:href="@{/contacts/{id}(id=${entry.id})}">
                         </a>
                     </li>
                 </ul>
+
+
                 <div>
                     <div th:if="${contact == null}">
                         Noch keinen Kontakt ausgewählt.
                     </div>
 
+                    <form action="/contacts" method="get">
+                        <input type="text" placeholder="Search here" name="searchName">
+                        <input type="submit" value="Search">
+<!--                        <input th:type="submit" name="ClearName" value="Clear">-->
+                    </form>
+
                     <table th:if="${contact != null}">
                         <!-- wird nur gerendet wenn contact nicht null-->
 
-                        <tr th:replace="fragements/contactsFrag::listSingleEntry('Vorname', ${contact.firstName})"></tr>
-                        <tr th:replace="fragements/contactsFrag::listSingleEntry('Nachname', ${contact.lastName})"></tr>
+                        <tr th:replace="fragements/contactsFrag::listSingleEntry('Vorname', 'first-name', ${contact.firstName})"></tr>
+                        <tr th:replace="fragements/contactsFrag::listSingleEntry('Nachname', 'last-name', ${contact.lastName})"></tr>
 
                         <div th:if="${!contact.phone.isEmpty()}">
                             <tr th:replace="fragements/contactsFrag::listRow('Telefonnummer', ${contact.phone})"></tr>

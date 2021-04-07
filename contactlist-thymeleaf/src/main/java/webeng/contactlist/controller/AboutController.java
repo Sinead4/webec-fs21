@@ -18,7 +18,7 @@ public class AboutController {
 
     @GetMapping("/about")
     public String about(Model model){
-        model.addAttribute("contactList", service.getContactList());
+        model.addAttribute("contactList", service.getContactList(null));
         model.addAttribute("countedMails",service.countAllMails());
         model.addAttribute("countedPhoneNumbers",service.countAllPhoneNumbers());
         return "about";

@@ -20,15 +20,15 @@ public class ContactsController {
     }
 
     @GetMapping("/contacts")
-    public String contacts(Model model) {
-        model.addAttribute("contactList", service.getContactList());
+    public String contacts(String search, Model model) {
+        model.addAttribute("contactList", service.getContactList(search));
         return "contacts";
     }
 
     @GetMapping("/contacts/{id}")
-    public String showContact(@PathVariable int id, Model model) {
+    public String showContact(@PathVariable int id, String search, Model model) {
         var contact = service.findContact(id).orElseThrow(ContactNotFound::new);
-        model.addAttribute("contactList", service.getContactList());
+        model.addAttribute("contactList", service.getContactList(search));
         model.addAttribute("contact", contact);
         return "contacts";
     }
@@ -36,7 +36,7 @@ public class ContactsController {
     @ExceptionHandler(ContactNotFound.class)
     @ResponseStatus(NOT_FOUND)
     public String notFound(Model model) {
-        model.addAttribute("contactList", service.getContactList());
+        model.addAttribute("contactList", service.getContactList(null));
         return "contacts";
     }
 

@@ -90,3 +90,16 @@ nav ul {
     display: inline-block;
     list-style-type: none;
 }
+
+input{
+    font-size: 100%;
+    font-family: inherit;
+}
+
+#contactSearchBar{
+    align-content: end;
+}
+
+form{
+    margin-bottom: 1.5em;
+}

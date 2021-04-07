@@ -26,7 +26,7 @@ class ContactServiceTest {
 
     @Test
     void contactListIds() {
-        var contactList = service.getContactList();
+        var contactList = service.getContactList(null);
         assertNotNull(contactList);
         var ids = contactList.stream()
                 .map(ContactListEntry::getId)
@@ -36,7 +36,7 @@ class ContactServiceTest {
 
     @Test
     void contactListName() {
-        var contactList = service.getContactList();
+        var contactList = service.getContactList(null);
         assertNotNull(contactList);
         assertFalse(contactList.isEmpty());
         assertEquals("Mabel Guppy", contactList.get(0).getName());
