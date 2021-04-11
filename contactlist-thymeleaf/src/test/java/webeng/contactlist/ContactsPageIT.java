@@ -33,6 +33,7 @@ public class ContactsPageIT {
     void clickingAContactLinkShowsDetails(){
         var driver = new HtmlUnitDriver();
         driver.navigate().to("http://localhost:"+port +"/contacts");
+//        var pageobject = PageObject.create(driver, port);
 
         var contactLinks = driver.findElements(By.cssSelector("main ul a"));  //cssSelector("main ul a"));
         contactLinks.get(0).click();

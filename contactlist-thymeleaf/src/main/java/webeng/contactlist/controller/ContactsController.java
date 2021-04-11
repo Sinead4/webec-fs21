@@ -2,10 +2,7 @@ package webeng.contactlist.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 import webeng.contactlist.service.ContactService;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
@@ -14,21 +11,33 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 public class ContactsController {
 
     private final ContactService service;
+    private String testSearchName;
 
     public ContactsController(ContactService service) {
         this.service = service;
     }
 
     @GetMapping("/contacts")
-    public String contacts(String search, Model model) {
-        model.addAttribute("contactList", service.getContactList(search));
+    public String contacts(String searchName, Model model) {
+        model.addAttribute("contactList", service.getContactList(searchName));
+        testSearchName = searchName;
         return "contacts";
     }
 
+    @GetMapping(value = "/contacts", params = "ClearName")
+    public String contactsClear(String searchName, Model model) {
+        model.addAttribute("contactList", service.getContactList(searchName));
+        testSearchName = null;
+        return "contacts";
+    }
+
+
     @GetMapping("/contacts/{id}")
-    public String showContact(@PathVariable int id, String search, Model model) {
+    public String showContact(@PathVariable int id, String searchName, Model model) { //warum searchName Null??
         var contact = service.findContact(id).orElseThrow(ContactNotFound::new);
-        model.addAttribute("contactList", service.getContactList(search));
+        searchName = testSearchName;
+
+        model.addAttribute("contactList", service.getContactList(searchName));
         model.addAttribute("contact", contact);
         return "contacts";
     }

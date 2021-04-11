@@ -27,9 +27,9 @@
                     </div>
 
                     <form action="/contacts" method="get">
-                        <input type="text" placeholder="Search here" name="searchName">
+                        <input type="text" placeholder="Search here" th:name="searchName">
                         <input type="submit" value="Search">
-<!--                        <input th:type="submit" name="ClearName" value="Clear">-->
+                        <input type="submit" name="ClearName" value="Clear">
                     </form>
 
                     <table th:if="${contact != null}">

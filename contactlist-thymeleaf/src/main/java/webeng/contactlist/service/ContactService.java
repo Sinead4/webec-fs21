@@ -8,6 +8,7 @@ import webeng.contactlist.model.ContactListEntry;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 
@@ -23,6 +24,7 @@ public class ContactService {
 
     private final Map<Integer, Contact> contacts;
 
+
     public ContactService(ObjectMapper mapper) throws IOException {
         var contactsList = mapper.readValue(ContactService.class.getResource(JSON_FILE),
                 new TypeReference<List<Contact>>() {});
@@ -31,11 +33,13 @@ public class ContactService {
     }
 
     public List<ContactListEntry> getContactList(String search) {
+
         return contacts.values().stream()
                 .sorted(comparing(Contact::getId))
                 .filter(c -> search  == null || //zuerst abchecken ob null wenn ja wird alles zurückgegeben.
-                        c.getFirstName().contains(search) ||
-                        c.getLastName().contains(search))
+                        c.getFirstName().toLowerCase().contains(search.toLowerCase()) ||
+                        c.getLastName().toLowerCase().contains(search.toLowerCase()) ||
+                        c.getEmail().contains(search))
                 .map(c -> new ContactListEntry(c.getId(), c.getFirstName() + " " + c.getLastName()))
                 .collect(toList());
     }
