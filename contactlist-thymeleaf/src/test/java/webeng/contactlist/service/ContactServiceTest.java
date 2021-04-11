@@ -3,11 +3,11 @@ package webeng.contactlist.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.opentest4j.AssertionFailedError;
-import webeng.contactlist.model.ContactListEntry;
+import webengpersistent.contactlist.model.ContactListEntry;
+import webengpersistent.contactlist.service.ContactService;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES;
 import static java.util.Collections.emptyList;
@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ContactServiceTest {
 
-    ContactService service;
+    webengpersistent.contactlist.service.ContactService service;
 
     ContactServiceTest() throws IOException {
         var mapper = new ObjectMapper().configure(FAIL_ON_UNKNOWN_PROPERTIES, false);

@@ -3,7 +3,7 @@ package webeng.contactlist.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import webeng.contactlist.service.ContactService;
+import webengpersistent.contactlist.service.ContactService;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 

@@ -3,12 +3,11 @@ package webeng.contactlist.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
-import webeng.contactlist.model.Contact;
-import webeng.contactlist.model.ContactListEntry;
+import webengpersistent.contactlist.model.Contact;
+import webengpersistent.contactlist.model.ContactListEntry;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 
@@ -26,7 +25,7 @@ public class ContactService {
 
 
     public ContactService(ObjectMapper mapper) throws IOException {
-        var contactsList = mapper.readValue(ContactService.class.getResource(JSON_FILE),
+        var contactsList = mapper.readValue(webengpersistent.contactlist.service.ContactService.class.getResource(JSON_FILE),
                 new TypeReference<List<Contact>>() {});
         contacts = contactsList.stream()
                 .collect(toMap(Contact::getId, identity()));

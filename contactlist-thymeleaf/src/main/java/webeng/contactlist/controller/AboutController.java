@@ -5,8 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import webeng.contactlist.service.ContactService;
 
-import java.util.List;
-
 @Controller
 public class AboutController {
 
